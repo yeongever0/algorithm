@@ -17,6 +17,10 @@ public class Main1446 {
             int start = Integer.parseInt(st.nextToken());
             int end = Integer.parseInt(st.nextToken());
             int distance = Integer.parseInt(st.nextToken());
+
+            if (end > d) {
+                continue;
+            }
             roads.add(new Road(start, end, distance));
         }
         Collections.sort(roads);
@@ -57,8 +61,10 @@ public class Main1446 {
 
         @Override
         public int compareTo(Road o) {
-            if (this.start >= o.start) {
-                if (this.end > o.end) {
+            if (this.start > o.start) {
+                return 1;
+            } else if (this.start == o.start) {
+                if (this.start > o.start) {
                     return 1;
                 } else {
                     return -1;
